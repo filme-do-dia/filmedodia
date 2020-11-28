@@ -1,0 +1,1 @@
+alert('Bem vindo ao Filme do Dia')
