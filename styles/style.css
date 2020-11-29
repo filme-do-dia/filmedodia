@@ -1,7 +1,94 @@
 body{
+    margin: 0;
+    padding: 3vh;
     background-color: rgb(54, 54, 54);
 }
 
 h1{
     color: antiquewhite
 }
+
+.showMovie{
+    padding: 4vh;
+    text-align: center;
+}
+
+#posterMovie{
+    width: 100%;
+    border-radius: 3%;
+}
+
+#info{
+    background-color: gray; 
+    border-radius: 0.75rem;
+    margin-top: 3vh;
+    padding-bottom: 5vh;
+}
+
+#summary{
+    margin: 3vh 0;
+    border-radius: .75rem;
+    background-color: gray;    
+    padding: 2rem
+}
+
+.moreInfo{
+    /* margin-top: 0.5rem; */
+}
+
+#rate, #watch, #trailer{
+    background-color: lightgray;
+    border-radius: 4%;
+    padding: 0.7rem;
+    border: 5px solid gray;
+    color: black;
+}
+
+#rate img{
+    height: 4rem;
+    margin-right: 2rem;
+}
+
+.watchImg img{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 0.5rem;
+    
+}
+
+#cast{
+    margin: 0;
+    border-radius: .75rem;
+    padding-top: 1rem;
+    background-color: gray;
+    color: white;
+}
+
+#cast .col-md-2{
+    text-align: center;
+}
+
+.actorImg{
+    height: 25vh;
+    border-radius: 50%;
+}
+
+/* @media (min-width: 768px){
+    p{
+        font-size: 1.3rem;
+    }
+    #showMovie img{
+        width: 45vw;
+    }
+    .watchImg img{
+        height: 7.5rem;
+        width: 7.5rem;
+             
+    }
+    #summary h4, h5, p{
+        padding: .7rem .5rem;
+    }
+    #cast h4, h5, p{
+        padding: .7rem .5rem;
+    }
+} */
