@@ -1,1 +1,1 @@
-alert('Bem vindo ao Filme do Dia')
+//alert('Bem vindo ao Filme do Dia')
