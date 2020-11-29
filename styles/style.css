@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
     padding: 3vh;
@@ -5,7 +6,8 @@ body{
 }
 
 h1{
-    color: antiquewhite
+    color: antiquewhite;
+    font-size: 2.3rem;
 }
 
 .showMovie{
@@ -32,13 +34,17 @@ h1{
     padding: 2rem
 }
 
+.moreInfo{
+    margin-top: 0.5rem;
+}
 
 #rate, #watch, #trailer{
     background-color: lightgray;
-    border-radius: 4%;
+    border-radius: .5rem;
     padding: 0.7rem;
     border: 5px solid gray;
     color: black;
+    
 }
 
 #rate img{
@@ -66,51 +72,12 @@ h1{
 }
 
 .actorImg{
-    height: 25vh;
+    height: 12rem;
     border-radius: 50%;
 }
 
-#moreMovies{
-    margin-top: 2rem;
-    color: white;
-    text-align: center;
+@media (min-width: 768px){
+    h1{
+        font-size: 4rem;
+    }
 }
-
-#moreMovies .col-md-6{
-    background-color: gray;
-    border-radius: 0.75rem;
-    border: 7px solid rgb(54, 54, 54)
-}
-
-#moreMovies img{
-    max-height: 45vh;
-    min-width: 31vh;
-    border-radius: 0.75rem;
-}
-
-footer{
-    color: lightgray;
-    text-align: center;
-}
-
-
-
-/* @media (min-width: 768px){
-    p{
-        font-size: 1.3rem;
-    }
-    #showMovie img{
-        width: 45vw;
-    }
-    .watchImg img{
-        height: 7.5rem;
-        width: 7.5rem;
-             
-    }
-    #summary h4, h5, p{
-        padding: .7rem .5rem;
-    }
-    #cast h4, h5, p{
-        padding: .7rem .5rem;
-    }
-} */
