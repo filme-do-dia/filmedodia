@@ -32,9 +32,6 @@ h1{
     padding: 2rem
 }
 
-.moreInfo{
-    /* margin-top: 0.5rem; */
-}
 
 #rate, #watch, #trailer{
     background-color: lightgray;
@@ -72,6 +69,31 @@ h1{
     height: 25vh;
     border-radius: 50%;
 }
+
+#moreMovies{
+    margin-top: 2rem;
+    color: white;
+    text-align: center;
+}
+
+#moreMovies .col-md-6{
+    background-color: gray;
+    border-radius: 0.75rem;
+    border: 7px solid rgb(54, 54, 54)
+}
+
+#moreMovies img{
+    max-height: 45vh;
+    min-width: 31vh;
+    border-radius: 0.75rem;
+}
+
+footer{
+    color: lightgray;
+    text-align: center;
+}
+
+
 
 /* @media (min-width: 768px){
     p{
