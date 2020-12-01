@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body>
+<body onload="getMovie()">
     <header class="d-flex align-items-center justify-content-center navbar">
         <h1>FILME DO DIA</h1>
     </header>
     <main>
         <div class="row">
-            <div class="showMovie col-lg-3 col-md-12 col-sm-12">
+            <div class="mainInfoData col-lg-3 col-md-12 col-sm-12">
                 <img id="posterMovie" src="img/carregando.gif" alt="poster do filme">
                 <div id="info" class="d-flex align-items-center flex-column text-light">
                     <br>
@@ -179,7 +179,9 @@
     <footer>
         Desenvolvido para o Projeto Integrador do curso de FrontEnd da Digital House
     </footer>
+    <script src="scripts/variaveis.js"></script>
     <script src="scripts/script.js"></script>
+    <script src="scripts/actor.js"></script>
 </body>
 
 </html>

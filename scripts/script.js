@@ -1,12 +1,4 @@
-//--todo: fazer ser 1 por dia
-
-
-const api_key = "3f91f0994a6cd8f151cd33e0d9d76a08";
-const page = Math.floor(Math.random() * 500) + 1;
-const position = Math.floor(Math.random() * 20);
-const url = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`;
-
-getMovie();
+//--todo: fazer ser 1 por dia | colocar a data do dia atual | melhorar a escolha do page para caso tenha mais de 500 pages um dia na api
 
 async function getMovie(){
     try {
@@ -22,7 +14,7 @@ async function getMovie(){
         getMovieRecommendations(movie)
         
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
 
@@ -47,7 +39,7 @@ function setMovieSummary(movie) {
 }
 
 function getMovieCast(movie){
-    fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${api_key}&language=pt-BR&append_to_response=credits`).then(response => response.json()).then(data => {
+    fetch(`${baseUrl}/movie/${movie.id}?api_key=${api_key}&language=${language}&append_to_response=credits`).then(response => response.json()).then(data => {
         var cast = data.credits.cast;
         var castShow = cast.slice(0,6);
         var castMore = cast.slice(6,cast.length);
@@ -56,9 +48,9 @@ function getMovieCast(movie){
             var personImage = person.profile_path ? `http://image.tmdb.org/t/p/w300/${person.profile_path}` : 'img/semimagem.png';
             document.getElementById('castDetail').innerHTML +=
                 `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
-                    <img src="${personImage}" alt="${person.name}" class="actorImg">
+                    <a href="ator.html" onclick="setActor('${person.id}')"><img src="${personImage}" alt="${person.name}" class="actorImg"></a>
                     <p><strong>${person.name}</strong> é <br>${person.character}</p>
-                </div>`;
+                </div>`;            
         });
         document.getElementById('castDetail').innerHTML += 
             `<div class="col-md-12">
@@ -77,7 +69,11 @@ function getMovieCast(movie){
                 </div>`;
         })
 
-    })
+    }).catch(err=>console.error('Erro:' + err))
+}
+
+function setActor(id){
+    localStorage.setItem('actorId', id)
 }
 
 function showMoreActors(){
@@ -93,7 +89,7 @@ function showMoreActors(){
 }
 
 function getMovieSimilar(movie){
-    fetch(`https://api.themoviedb.org/3/movie/${movie.id}/similar?api_key=${api_key}&language=pt-BR`).then(response => response.json()).then(data => {
+    fetch(`${baseUrl}/movie/${movie.id}/similar?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
         var similares = data.results;
 
         similares.forEach(similar => {
@@ -105,11 +101,11 @@ function getMovieSimilar(movie){
                     <br>
                 </div>`
         })
-    })
+    }).catch(err=>console.error('Erro:' + err))
 }
 
 function getMovieRecommendations(movie){
-    fetch(`https://api.themoviedb.org/3/movie/${movie.id}/recommendations?api_key=${api_key}&language=pt-BR`).then(response => response.json()).then(data => {
+    fetch(`${baseUrl}/movie/${movie.id}/recommendations?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
         var recommendations = data.results;
 
         recommendations.forEach(recommendation => {
@@ -121,7 +117,7 @@ function getMovieRecommendations(movie){
                     <br>
                 </div>`
         })
-    })
+    }).catch(err=>console.error('Erro:' + err))
 }
 
 
@@ -145,10 +141,10 @@ function setMovieYear(movie) {
 }
 
 function setMovieGenre(movie) {
-    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${api_key}&language=pt-BR`).then(response => response.json()).then(data => {
+    fetch(`${baseUrl}/genre/movie/list?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
         var generos = data.genres.filter(generoF => movie.genre_ids.includes(generoF.id)).map(generoM => generoM.name);
         document.getElementById('movieCategory').textContent = generos;
-    });
+    }).catch(err=>console.error('Erro:' + err));
 }
 
 function setMovieOverview(movie) {
@@ -169,7 +165,7 @@ function setMovieVoteCount(movie) {
 async function getProviders(movie){
     /* {"link":"https://www.themoviedb.org/movie/22907-takers/watch?locale=BR","flatrate":[{"display_priority":4,"logo_path":"/2slPVV21kaPDx0NwjVtcUjdvzXz.jpg","provider_id":31,"provider_name":"HBO Go"}],"buy":[{"display_priority":2,"logo_path":"/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg","provider_id":2,"provider_name":"Apple iTunes"},{"display_priority":3,"logo_path":"/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg","provider_id":3,"provider_name":"Google Play Movies"}],"rent":[{"display_priority":2,"logo_path":"/q6tl6Ib6X5FT80RMlcDbexIo4St.jpg","provider_id":2,"provider_name":"Apple iTunes"},{"display_priority":3,"logo_path":"/p3Z12gKq2qvJaUOMeKNU2mzKVI9.jpg","provider_id":3,"provider_name":"Google Play Movies"}]} */
 
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/watch/providers?api_key=${api_key}`);
+    const response = await fetch(`${baseUrl}/movie/${movie.id}/watch/providers?api_key=${api_key}`);
     var providers = await response.json();
     var allProviders = providers.results.BR
 
@@ -230,7 +226,7 @@ async function getProviders(movie){
 }
 
 async function getTrailers(movie){
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`);
+    const response = await fetch(`${baseUrl}/movie/${movie.id}/videos?api_key=${api_key}&language=en-US`);
     var trailers = await response.json();
 
     var resultados = trailers.results;
