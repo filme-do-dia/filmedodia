@@ -49,18 +49,47 @@ function setMovieSummary(movie) {
 function getMovieCast(movie){
     fetch(`https://api.themoviedb.org/3/movie/${movie.id}?api_key=${api_key}&language=pt-BR&append_to_response=credits`).then(response => response.json()).then(data => {
         var cast = data.credits.cast;
+        var castShow = cast.slice(0,6);
+        var castMore = cast.slice(6,cast.length);
 
-        //--melhoria: limitar quantidade
-
-        cast.forEach(person => {
+        castShow.forEach(person => {
             var personImage = person.profile_path ? `http://image.tmdb.org/t/p/w300/${person.profile_path}` : 'img/semimagem.png';
             document.getElementById('castDetail').innerHTML +=
                 `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                     <img src="${personImage}" alt="${person.name}" class="actorImg">
-                    <p>${person.name}</p>
-                </div>`
+                    <p><strong>${person.name}</strong> é <br>${person.character}</p>
+                </div>`;
+        });
+        document.getElementById('castDetail').innerHTML += 
+            `<div class="col-md-12">
+                <button id="btnMoreActors" onclick="showMoreActors()">+</button>
+            </div`
+        document.getElementById('castDetail').innerHTML += 
+            `<div id="moreActorsDiv"></div>`
+        document.getElementById('moreActorsDiv').innerHTML += 
+            `<div id="moreActors" class="row"></div>`
+        castMore.forEach(person => {
+            var personImage = person.profile_path ? `http://image.tmdb.org/t/p/w300/${person.profile_path}` : 'img/semimagem.png';
+            document.getElementById('moreActors').innerHTML +=
+                `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
+                    <img src="${personImage}" alt="${person.name}" class="actorImg">
+                    <p><strong>${person.name}</strong> é <br>${person.character}</p>
+                </div>`;
         })
+
     })
+}
+
+function showMoreActors(){
+    var divMoreActors = document.getElementById('moreActorsDiv');
+    var btnMoreActors = document.getElementById('btnMoreActors');
+    if(divMoreActors.style.display == 'none' || divMoreActors.style.display == ''){
+        divMoreActors.style.display = 'block';
+        btnMoreActors.innerHTML = '-';
+    } else {
+        divMoreActors.style.display = 'none';
+        btnMoreActors.innerHTML = '+';
+    }
 }
 
 function getMovieSimilar(movie){
@@ -97,7 +126,7 @@ function getMovieRecommendations(movie){
 
 
 function setMoviePoster(movie) {
-    if (movie.poster_path != "") {
+    if (movie.poster_path != null) {
         var poster = `http://image.tmdb.org/t/p/w500/${movie.poster_path}`;
         document.getElementById('posterMovie').src = poster;
     } else {
