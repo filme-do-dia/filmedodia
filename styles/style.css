@@ -61,7 +61,7 @@ h1{
     margin-right: 2rem;
 }
 
-/* mudar para ter responsividade */
+/*--melhoria: limitar quantidade*/
 .watchImg img{
     height: 4rem;
     width: 4rem;
