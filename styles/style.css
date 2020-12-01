@@ -104,12 +104,17 @@ h1{
     background-color: gray;
     border-radius: 1.5rem;
     border: 1.5vh solid rgb(54, 54, 54);
-    padding-top: 1.5vh
+    padding-top: 1.5vh;
 }
 
 #moreMovies img{
-    width: 100%;
+    width: 80%;
     border-radius: 0.75rem;
+    height: 80%;
+}
+
+#moreMovies h6{
+    margin: 0.4rem 0;
 }
 
 footer{
@@ -122,5 +127,11 @@ footer{
 @media (min-width: 768px){
     h1{
         font-size: 4rem;
+    }
+}
+@media(max-width:1024px){
+    #moreMovies h6{
+        font-size: 11px;
+        margin: 0.2rem 0;
     }
 }
