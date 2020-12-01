@@ -61,12 +61,24 @@ h1{
     margin-right: 2rem;
 }
 
+/* mudar para ter responsividade */
 .watchImg img{
     height: 4rem;
     width: 4rem;
-    border-radius: 0.5rem;
-    
+    border-radius: 0.5rem;    
 }
+
+#info-provider {
+    display: none;
+    z-index: 1;
+    color: white;
+    background-color: rgba(000,000,000,0.4);
+    padding: 0.5em;
+    margin: 1em 1em 0 1em;
+    text-align: center;
+    border-radius: 0.75rem;
+}
+
 
 #cast{
     margin: 0;
