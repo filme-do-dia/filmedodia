@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
     padding: 3vh;
@@ -6,8 +7,9 @@ body{
 }
 
 h1{
+
     color: white;
-    
+
 }
 
 .showMovie{
@@ -55,6 +57,7 @@ h1{
 
 #rate, #watch, #trailer{
     background-color: lightgray;
+
     border-radius: .75rem;
     padding: 0.7rem;
     border: 5px solid gray;
@@ -94,6 +97,7 @@ h1{
     height: 12rem;
     border-radius: 50%;
 }
+
 
 #moreMovies{
     margin-top: 2rem;
