@@ -11,6 +11,8 @@ function getActor(){
         setActorBiography(actor);
         setActorMovies(actor);
 
+        document.title = actor.name;
+
     }).catch(err=>console.error('Erro:' + err))
 }
 
@@ -49,15 +51,11 @@ function setActorMovies(actor){
         var movieImage = movie.poster_path ? `http://image.tmdb.org/t/p/w300/${movie.poster_path}` : 'img/semimagem.png';
             document.getElementById('actorMovies').innerHTML +=
                 `<div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="${movieImage}" alt="${movie.title}">
+                    <a href="novoFilme.html" onclick="setMovie('${movie.id}')"><img src="${movieImage}" alt="${movie.title}"></a>
                     <h6>${movie.title}</h6>
                     <p>como ${movie.character}</p>
                     <br>
                 </div>`
     })
-}
-
-function voltarIndex(){
-    window.history.back();
 }
 

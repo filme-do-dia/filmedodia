@@ -11,7 +11,8 @@ async function getMovie(){
         setMovieSummary(movie);
         getMovieCast(movie);
         getMovieSimilar(movie);
-        getMovieRecommendations(movie)
+        getMovieRecommendations(movie);
+        setDate();
         
     } catch (error) {
         console.error(error)
@@ -64,7 +65,7 @@ function getMovieCast(movie){
             var personImage = person.profile_path ? `http://image.tmdb.org/t/p/w300/${person.profile_path}` : 'img/semimagem.png';
             document.getElementById('moreActors').innerHTML +=
                 `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
-                    <img src="${personImage}" alt="${person.name}" class="actorImg">
+                    <a href="ator.html" onclick="setActor('${person.id}')"><img src="${personImage}" alt="${person.name}" class="actorImg"></a>
                     <p><strong>${person.name}</strong> é <br>${person.character}</p>
                 </div>`;
         })
@@ -73,7 +74,7 @@ function getMovieCast(movie){
 }
 
 function setActor(id){
-    localStorage.setItem('actorId', id)
+    localStorage.setItem('actorId', id);
 }
 
 function showMoreActors(){
@@ -96,12 +97,16 @@ function getMovieSimilar(movie){
             var posterImage = similar.poster_path.length ? `http://image.tmdb.org/t/p/w300/${similar.poster_path}` : 'img/semimagem.png';
             document.getElementById('similarMovies').innerHTML +=
                 `<div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="${posterImage}" alt="${similar.title}">
+                    <a href="novoFilme.html" onclick="setMovie('${similar.id}')"><img src="${posterImage}" alt="${similar.title}"></a>                    
                     <h6>${similar.title}</h6>
                     <br>
                 </div>`
         })
     }).catch(err=>console.error('Erro:' + err))
+}
+
+function setMovie(id){
+    localStorage.setItem('movieId', id);
 }
 
 function getMovieRecommendations(movie){
@@ -112,7 +117,7 @@ function getMovieRecommendations(movie){
             var posterImage = recommendation.poster_path ? `http://image.tmdb.org/t/p/w300/${recommendation.poster_path}` : 'img/semimagem.png';
             document.getElementById('recommendationsMovies').innerHTML +=
                 `<div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="${posterImage}" alt="${recommendation.title}">
+                    <a href="novoFilme.html" onclick="setMovie('${recommendation.id}')"><img src="${posterImage}" alt="${recommendation.title}"></a>                    
                     <h6>${recommendation.title}</h6>
                     <br>
                 </div>`
@@ -120,6 +125,11 @@ function getMovieRecommendations(movie){
     }).catch(err=>console.error('Erro:' + err))
 }
 
+function setDate(){
+    var today = new Date();
+    today = formatDate(today);
+    document.getElementById('webTitle').innerHTML += ` - ${today}`;
+}
 
 function setMoviePoster(movie) {
     if (movie.poster_path != null) {
@@ -273,5 +283,9 @@ async function getTrailers(movie){
     else {
         document.getElementById('ondeAssistir').src = `<img src="img/semimagem.png">`;
     } */
+}
+
+function voltarIndex(){
+    window.history.back();
 }
             

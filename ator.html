@@ -11,7 +11,12 @@
     <title>Ator</title>
 </head>
 <body onload="getActor()">
-    <button onclick="voltarIndex()"><img src="img/back.png" alt=""></button>
+    <div class="d-flex flex-row justify-content-around">
+        <button onclick="voltarIndex()"><img src="img/back.png" alt=""></button>
+        <header class="d-flex align-items-center justify-content-center navbar">
+            <h1>FILME DO DIA - ator</h1>
+        </header>
+    </div>    
     <main>
         <div class="row">
             <div class="mainInfoData col-lg-3 col-md-12 col-sm-12">
@@ -42,7 +47,7 @@
     <footer>
         Desenvolvido para o Projeto Integrador do curso de FrontEnd da Digital House
     </footer>
-    
+
     <script src="scripts/variaveis.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/actor.js"></script>

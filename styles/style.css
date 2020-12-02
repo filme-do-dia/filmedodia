@@ -101,7 +101,7 @@ button{
     border-radius: 0.75rem;
     background-color: lightgray;
     margin: 1rem 0rem;
-    width: 10%;
+    width: 10%;    
 }
 
 button:hover{
@@ -122,7 +122,7 @@ button:hover{
     border-radius: 50%;
 }
 
-#moreMovies, #knownFor{
+#moreMovies, #actorMovies{
     margin-top: 2rem;
     color: white;
     text-align: center;
