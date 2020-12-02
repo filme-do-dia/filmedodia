@@ -10,19 +10,20 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body>
+<body onload="getMovie()">
     <header class="d-flex align-items-center justify-content-center navbar">
-        <h1>FILME DO DIA</h1>
+        <h1 id="webTitle">FILME DO DIA</h1>
     </header>
     <main>
         <div class="row">
-            <div class="showMovie col-lg-3 col-md-12 col-sm-12">
-                <img id="posterMovie" src="img/aladin.jpg" alt="Poster Aladin">
+            <div class="mainInfoData col-lg-3 col-md-12 col-sm-12">
+                <img id="posterMovie" src="img/carregando.gif" alt="poster do filme">
                 <div id="info" class="d-flex align-items-center flex-column text-light">
                     <br>
-                    <h3 id="movieName">Aladdin</h3>
-                    <h5 id="movieYear">2019</h5>
-                    <h6 id="movieCategory">Aventura, Fantasia, Romance</h6>
+                    <h3 id="movieName">N/A</h3>
+                    <h5 id="movieYear">N/A</h5>
+                    <!-- --melhoria: responsividade -->
+                    <h6 id="movieCategory">N/A</h6>
                 </div>
             </div>
             <div class="col-lg-9 col-md-12 col-sm-12">
@@ -30,61 +31,54 @@
                     <div class="row">
                         <div id="resume" class="col-md-12">
                             <h4>Resumo</h4>
-                            <p> Um jovem humilde descobre uma lâmpada mágica, com um gênio que pode lhe conceder
-                                desejos. Agora o rapaz quer conquistar a moça por quem se apaixonou, mas o que ele não
-                                sabe é que a jovem é uma princesa que está prestes a se noivar. Agora, com a ajuda do
-                                Gênio (Will Smith), ele tenta se passar por um príncipe e para conquistar o amor da moça
-                                e a confiança de seu pai."</p>
+                            <p id="overview"> N/A</p>
                         </div>
                     </div>
                     <div class="row moreInfo">
                         <div id="rate" class="col-md-4 d-flex flex-row align-items-center justify-content-center">
                             <img src="img/estrela.png" alt="Avaliação Filme">
-                            <h5>7.2 de 7192 votos</h5>
+                            <h5><span id="voteAverage">N/A</span> de <span id="voteCount">N/A</span> votos</h5>
                         </div>
                         <div id="watch" class="col-md-4">
                             <h5>Onde Assistir:</h5>
-                            <div id="watchImg" class="watchImg d-flex align-items-center justify-content-around">
-                                <img src="img/Disney+_logo.svg" alt="Disney +">
-                                <img src="img/telecine.png" alt="telecine">
+                            <div id="ondeAssistir" class="watchImg d-flex align-items-center justify-content-around">
                             </div>
+                            <span id="info-provider"></span>
                         </div>
                         <div id="trailer" class="col-md-4">
                             <h5>Trailer:</h5>
-                            <div class="watchImg d-flex align-items-center justify-content-around">
-                                <img src="img/youtube.png" alt="You Tube">
-                                <img src="img/vimeo.png" alt="Vimeo">
+                            <div id="trailers" class="watchImg d-flex align-items-center justify-content-around">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="cast" class="col-md-12">
                     <h4>Elenco</h4>
-                    <div class="row d-flex justify-content-around flex-row">
-                        <div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
+                    <div id="castDetail" class="row d-flex justify-content-around flex-row">
+                        <!-- <div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                             <img src="img/will.jpg" alt="" class="actorImg">
                             <p>Will Smith</p>
                         </div>
                         <div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                             <img src="img/naomi.jpg" alt="" class="actorImg">
-                            <p>Naomi xxxxx</p>
+                            <p>Naomi Scott</p>                            
                         </div>
                         <div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                             <img src="img/nema.jpg" alt="" class="actorImg">
-                            <p>Nema xxxx</p>
+                            <p>Mena Massoud</p>                            
                         </div>
                         <div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                             <img src="img/nasim.jpg" alt="" class="actorImg">
-                            <p>Nasim xxxxx</p>
+                            <p>Nasim Pedrad</p>                            
                         </div>
                         <div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                             <img src="img/marwan.jpg" alt="" class="actorImg">
-                            <p>Marwan xxxxxxxxx</p>
+                            <p>Marwan Kenzari</p>                            
                         </div>
                         <div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                             <img src="img/steve.jpg" alt="" class="actorImg">
-                            <p>Steve xxxxxxx</p>
-                        </div>
+                            <p>Navid Negahban</p>                            
+                        </div> -->                     
                     </div>
                 </div>
             </div>
@@ -95,8 +89,8 @@
         <div class="row">
             <div class="col-md-6 sectionMovies">
                 <h4>Similares</h4><br>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                <div id="similarMovies" class="row">
+                    <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                         <img src="https://images-na.ssl-images-amazon.com/images/I/718if%2BeHIeL._AC_SY879_.jpg">
                         <h6>A Bela e a Fera</h6>
                     </div>
@@ -133,13 +127,13 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <img src="https://i.pinimg.com/originals/8b/9e/8c/8b9e8c80fc4929ee384ffd234bc7acb7.jpg">
                         <h6>A Princesa e o Sapo</h6>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-md-6 sectionMovies">
                 <h4>Recomendações</h4><br>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
+                <div id="recommendationsMovies" class="row">
+                    <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                         <img src="https://imgc.allpostersimages.com/img/posters/frozen-2_u-L-F9J84N0.jpg">
                         <h6>Frozen II</h6>
                     </div>
@@ -176,7 +170,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <img src="https://img.auctiva.com/imgdata/1/9/8/3/0/8/8/webimg/927294390_o.jpg">
                         <h6>Moana</h6>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -185,7 +179,9 @@
     <footer>
         Desenvolvido para o Projeto Integrador do curso de FrontEnd da Digital House
     </footer>
+    <script src="scripts/variaveis.js"></script>
     <script src="scripts/script.js"></script>
+    <script src="scripts/helpers.js"></script>
 </body>
 
 </html>
