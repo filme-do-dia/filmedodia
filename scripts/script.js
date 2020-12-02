@@ -1,4 +1,11 @@
-//--todo: fazer ser 1 por dia | colocar a data do dia atual | melhorar a escolha do page para caso tenha mais de 500 pages um dia na api
+//--todo: fazer rodar 1x por dia | colocar a data do dia atual | melhorar a escolha do page para caso tenha mais de 500 pages um dia na api
+
+/* function runOncePerDay(){
+    if(!hasOneDayPassed() ) return false;
+  
+    
+    getMovie();
+} */
 
 async function getMovie(){
     try {
@@ -12,7 +19,7 @@ async function getMovie(){
         getMovieCast(movie);
         getMovieSimilar(movie);
         getMovieRecommendations(movie);
-        setDate();
+        //setDate();
         
     } catch (error) {
         console.error(error)
@@ -74,7 +81,8 @@ function getMovieCast(movie){
 }
 
 function setActor(id){
-    localStorage.setItem('actorId', id);
+    sessionStorage.setItem('actorId', id);
+    /* localStorage.setItem('actorId', id); */
 }
 
 function showMoreActors(){
@@ -106,7 +114,8 @@ function getMovieSimilar(movie){
 }
 
 function setMovie(id){
-    localStorage.setItem('movieId', id);
+    sessionStorage.setItem('movieId', id);
+    /* localStorage.setItem('movieId', id); */
 }
 
 function getMovieRecommendations(movie){
@@ -286,6 +295,7 @@ async function getTrailers(movie){
 }
 
 function voltarIndex(){
-    window.history.back();
+    window.location.href="index.html"
+    /* window.history.back(); */
 }
             

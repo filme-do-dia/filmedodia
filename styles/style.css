@@ -31,10 +31,10 @@ h1{
 }
 
 @media (min-width:575px) and (max-width: 991px){
-    #posterMovie{
+    #posterMovie, #actorImage{
         width: 50%;
     }
-    #info{
+    #info, #infoActor{
         width: 50%;
     }
     .mainInfoData{

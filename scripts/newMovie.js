@@ -1,6 +1,7 @@
 async function getNewMovie(){
     try {
-        var newMovieId = localStorage.getItem('movieId')
+        var newMovieId = sessionStorage.getItem('movieId');
+        /* var newMovieId = localStorage.getItem('movieId') */
         const response = await fetch(`${baseUrl}/movie/${newMovieId}?api_key=${api_key}&language=${language}&append_to_response=credits`);
         var data = await response.json();
         var movie = data;
@@ -12,7 +13,7 @@ async function getNewMovie(){
         getMovieCast(movie);
         getMovieSimilar(movie);
         getMovieRecommendations(movie);
-        setDate();
+        //setDate();
         document.title = movie.title;
         
     } catch (error) {

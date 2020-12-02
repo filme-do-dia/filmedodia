@@ -1,5 +1,6 @@
 function getActor(){
-    var actor = localStorage.getItem('actorId')
+    var actor = sessionStorage.getItem('actorId');
+    /* var actor = localStorage.getItem('actorId') */
     fetch(`${baseUrl}/person/${actor}?api_key=${api_key}&language=${language}&append_to_response=credits`).then(response => response.json()).then(data => {
         var actor = data;
         console.log(actor)
