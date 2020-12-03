@@ -197,7 +197,7 @@ async function getProviders(movie){
 
     var getAllProvidersOnce = [];
     getAllProvidersOnce = getAllProvidersOnce.concat(buy, rent, flatrate).filter(item => item != undefined);
-        
+
     var ids = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.provider_id) ? unique : [...unique, item.provider_id], []);
     var logos = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.logo_path) ? unique : [...unique, item.logo_path], []);
     var providersNames = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.provider_name) ? unique : [...unique, item.provider_name], []);
@@ -216,6 +216,7 @@ async function getProviders(movie){
     var infoProvider = document.getElementById('info-provider');
     var whichProvider = document.querySelectorAll('.whichProvider');
     
+    //--melhoria: fazer com o click para mobile
     whichProvider.forEach(providerImg => {
         providerImg.addEventListener('mouseover', () => {                
             infoProvider.style.display = 'block';
