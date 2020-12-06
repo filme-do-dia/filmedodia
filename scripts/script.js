@@ -187,6 +187,9 @@ async function getProviders(movie){
     const response = await fetch(`${baseUrl}/movie/${movie.id}/watch/providers?api_key=${api_key}`);
     var providers = await response.json();
     var allProviders = providers.results.BR
+    if (allProviders == undefined){
+        document.getElementById('ondeAssistir').innerHTML = '<span>sem informação</span>'
+    }
 
     var buy = allProviders.buy;
     var rent = allProviders.rent;
@@ -194,11 +197,7 @@ async function getProviders(movie){
 
     var getAllProvidersOnce = [];
     getAllProvidersOnce = getAllProvidersOnce.concat(buy, rent, flatrate).filter(item => item != undefined);
-
-    if (!getAllProvidersOnce.length){
-        document.getElementById('ondeAssistir').innerHTML = '<span>sem informação</span>'
-    }
-    
+        
     var ids = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.provider_id) ? unique : [...unique, item.provider_id], []);
     var logos = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.logo_path) ? unique : [...unique, item.logo_path], []);
     var providersNames = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.provider_name) ? unique : [...unique, item.provider_name], []);
