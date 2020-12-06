@@ -163,6 +163,8 @@ function setMovieYear(movie) {
 function setMovieGenre(movie) {
     fetch(`${baseUrl}/genre/movie/list?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
         var generos = data.genres.filter(generoF => movie.genre_ids.includes(generoF.id)).map(generoM => generoM.name);
+        generos = generos.join(', ');
+        
         document.getElementById('movieCategory').textContent = generos;
     }).catch(err=>console.error('Erro:' + err));
 }
