@@ -19,7 +19,7 @@ async function getMovie(){
         getMovieCast(movie);
         getMovieSimilar(movie);
         getMovieRecommendations(movie);
-        //setDate();
+        setDate();
         
     } catch (error) {
         console.error(error)
@@ -49,6 +49,7 @@ function setMovieSummary(movie) {
 function getMovieCast(movie){
     fetch(`${baseUrl}/movie/${movie.id}?api_key=${api_key}&language=${language}&append_to_response=credits`).then(response => response.json()).then(data => {
         var cast = data.credits.cast;
+        console.log(cast)
         var castShow = cast.slice(0,6);
         var castMore = cast.slice(6,cast.length);
 
@@ -162,6 +163,8 @@ function setMovieYear(movie) {
 function setMovieGenre(movie) {
     fetch(`${baseUrl}/genre/movie/list?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
         var generos = data.genres.filter(generoF => movie.genre_ids.includes(generoF.id)).map(generoM => generoM.name);
+        generos = generos.join(', ');
+        
         document.getElementById('movieCategory').textContent = generos;
     }).catch(err=>console.error('Erro:' + err));
 }
@@ -197,7 +200,7 @@ async function getProviders(movie){
 
     var getAllProvidersOnce = [];
     getAllProvidersOnce = getAllProvidersOnce.concat(buy, rent, flatrate).filter(item => item != undefined);
-        
+
     var ids = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.provider_id) ? unique : [...unique, item.provider_id], []);
     var logos = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.logo_path) ? unique : [...unique, item.logo_path], []);
     var providersNames = getAllProvidersOnce.reduce((unique, item) => unique.includes(item.provider_name) ? unique : [...unique, item.provider_name], []);
@@ -216,6 +219,7 @@ async function getProviders(movie){
     var infoProvider = document.getElementById('info-provider');
     var whichProvider = document.querySelectorAll('.whichProvider');
     
+    //--melhoria: fazer com o click para mobile
     whichProvider.forEach(providerImg => {
         providerImg.addEventListener('mouseover', () => {                
             infoProvider.style.display = 'block';
