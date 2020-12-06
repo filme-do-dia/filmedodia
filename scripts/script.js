@@ -19,7 +19,7 @@ async function getMovie(){
         getMovieCast(movie);
         getMovieSimilar(movie);
         getMovieRecommendations(movie);
-        //setDate();
+        setDate();
         
     } catch (error) {
         console.error(error)
@@ -49,6 +49,7 @@ function setMovieSummary(movie) {
 function getMovieCast(movie){
     fetch(`${baseUrl}/movie/${movie.id}?api_key=${api_key}&language=${language}&append_to_response=credits`).then(response => response.json()).then(data => {
         var cast = data.credits.cast;
+        console.log(cast)
         var castShow = cast.slice(0,6);
         var castMore = cast.slice(6,cast.length);
 
