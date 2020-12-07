@@ -58,11 +58,11 @@ function getMovieCast(movie){
             document.getElementById('castDetail').innerHTML +=
                 `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                     <a href="ator.html" onclick="setActor('${person.id}')"><img src="${personImage}" alt="${person.name}" class="actorImg"></a>
-                    <p><strong>${person.name}</strong> é <br>${person.character}</p>
+                    <p class="actor-character"><strong>${person.name}</strong><br>${person.character}</p>
                 </div>`;            
         });
         document.getElementById('castDetail').innerHTML += 
-            `<div class="col-md-12">
+            `<div id="divBtnMoreActors" class="col-md-12 text-center">
                 <button id="btnMoreActors" onclick="showMoreActors()">+</button>
             </div`
         document.getElementById('castDetail').innerHTML += 
@@ -157,7 +157,7 @@ function setMovieTitle(movie) {
 
 function setMovieYear(movie) {
     var ano = movie.release_date.slice(0, 4);
-    document.getElementById('movieYear').textContent = ano;
+    document.getElementById('movieYear').textContent = "(" + ano + ")";
 }
 
 function setMovieGenre(movie) {
@@ -191,7 +191,7 @@ async function getProviders(movie){
     var providers = await response.json();
     var allProviders = providers.results.BR
     if (allProviders == undefined){
-        document.getElementById('ondeAssistir').innerHTML = '<span>sem informação</span>'
+        document.getElementById('ondeAssistir').innerHTML = '<span>Indisponível no Brasil</span>'
     }
 
     var buy = allProviders.buy;
@@ -213,14 +213,14 @@ async function getProviders(movie){
 
     for(item in allProvidersOnce){
         document.getElementById('ondeAssistir').innerHTML += 
-        `<img class="whichProvider" src="http://image.tmdb.org/t/p/w92${allProvidersOnce[item].logo}" alt="${allProvidersOnce[item].name}">`;
+        `<div class="thumbProvider"><img class="whichProvider" src="http://image.tmdb.org/t/p/w92${allProvidersOnce[item].logo}" alt="${allProvidersOnce[item].name}"><span class="info-provider">${allProvidersOnce[item].name}</span></div>`;
     }
 
     var infoProvider = document.getElementById('info-provider');
     var whichProvider = document.querySelectorAll('.whichProvider');
     
     //--melhoria: fazer com o click para mobile
-    whichProvider.forEach(providerImg => {
+/*    whichProvider.forEach(providerImg => {
         providerImg.addEventListener('mouseover', () => {                
             infoProvider.style.display = 'block';
             infoProvider.innerHTML = providerImg.alt;
