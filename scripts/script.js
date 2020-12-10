@@ -253,14 +253,33 @@ async function getTrailers(movie){
 
     var resultados = trailers.results;
 
-    resultados.forEach(resultado =>{
-        if(resultado.site == "YouTube"){
-            document.getElementById('trailers').innerHTML +=
-                `<a target="_blank" href="https://www.youtube.com/watch?v=${resultado.key}"><img src="img/youtube.png" alt="YouTube"></a>`
-        }
-        if(resultado.site == "Vimeo"){
-            document.getElementById('trailers').innerHTML +=
-                `<a target="_blank" href="https://vimeo.com/${resultado.key}"><img src="img/vimeo.png" alt="Vimeo"></a>`
+    // resultados.forEach(resultado => {
+        
+    //     if(resultado.site == "YouTube"){
+    //         document.getElementById('trailers').innerHTML +=
+    //             `<a target="_blank" href="https://www.youtube.com/watch?v=${resultado.key}"><img src="img/youtube.png" alt="YouTube"></a>`
+    //     }
+    //     if(resultado.site == "Vimeo"){
+    //         document.getElementById('trailers').innerHTML +=
+    //             `<a target="_blank" href="https://vimeo.com/${resultado.key}"><img src="img/vimeo.png" alt="Vimeo"></a>`
+    //     }
+    // })
+    // if(!resultados.length){
+    //     document.getElementById('trailers').innerHTML += '<p>sem trailer</p>'
+    // }
+
+    resultados.forEach(function (resultado, limitador) {
+        
+        if (limitador < 6) {
+        
+            if (resultado.site == "YouTube") {
+                document.getElementById('trailers').innerHTML +=
+                    `<a target="_blank" href="https://www.youtube.com/watch?v=${resultado.key}"><img src="img/youtube.png" alt="YouTube"></a>`
+            }
+            if (resultado.site == "Vimeo") {
+                document.getElementById('trailers').innerHTML +=
+                    `<a target="_blank" href="https://vimeo.com/${resultado.key}"><img src="img/vimeo.png" alt="Vimeo"></a>`
+            }
         }
     })
     if(!resultados.length){

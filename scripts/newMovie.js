@@ -27,6 +27,6 @@ async function getNewMovie(){
         getGeneros.forEach(genero => {
             generos.push(genero.name)
         })
-
+        generos = generos.join(', ');
         document.getElementById('movieCategory').textContent = generos;
     }
