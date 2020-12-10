@@ -119,6 +119,9 @@ h1{
 .thumbProvider:hover .info-provider {
     display: block
 }
+.thumbProvider:focus .info-provider {
+    display: block
+}
 
 #trailers a img {
     margin: 0.25rem;
