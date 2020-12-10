@@ -1,7 +1,8 @@
 function getActor(){
     var actor = sessionStorage.getItem('actorId');
     /* var actor = localStorage.getItem('actorId') */
-    fetch(`${baseUrl}/person/${actor}?api_key=${api_key}&language=en-US&append_to_response=credits`).then(response => response.json()).then(data => {
+    // fetch(`${baseUrl}/person/${actor}?api_key=${api_key}&language=en-US&append_to_response=credits`).then(response => response.json()).then(data => {
+        fetch(`${baseUrl}/person/${actor}?api_key=${api_key}&language=pt-BR&append_to_response=credits`).then(response => response.json()).then(data => {
         var actor = data;
         console.log(actor)
         setActorBaseInfo(actor)
