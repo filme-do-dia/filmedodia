@@ -138,9 +138,9 @@ h1{
 button{
     border: none;
     border-radius: 0.5rem;
-    background-color: lightgray;
+    background-color: rgba(211, 211, 211, 0.3);
     margin: 1rem 0rem;
-    width: 10%;    
+    width: 10%;  
 }
 
 button:hover{
