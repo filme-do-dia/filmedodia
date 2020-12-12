@@ -19,15 +19,15 @@ function hasOneDayPassed(){
 
   // if there's a date in localstorage and it's equal to the above: 
   // inferring a day has yet to pass since both dates are equal.
-  if(localStorage.yourapp_date == date ) 
+  if(localStorage.primeiraVezNoDia == date) 
       return false;
 
   // this portion of logic occurs when a day has passed
-  localStorage.yourapp_date = date;
+  localStorage.primeiraVezNoDia = date;
   return true;
 }
 
-
+/* 
 // some function which should run once a day
 function runOncePerDay(){
   if(!hasOneDayPassed() ) return false;
@@ -35,3 +35,4 @@ function runOncePerDay(){
   // your code below
   //
 }
+ */
