@@ -1,29 +1,38 @@
 //--todo: fazer rodar 1x por dia | colocar a data do dia atual | melhorar a escolha do page para caso tenha mais de 500 pages um dia na api
 
-/* function runOncePerDay(){
-    if(!hasOneDayPassed() ) return false;
+function runOncePerDay(){
+
+    if(hasOneDayPassed()){
+        getMovie();
+    } else if(!hasOneDayPassed()){
+        var movie = JSON.parse(localStorage.movieOfTheDay)
+        setMovieInfo(movie);
+    }
   
     
-    getMovie();
-} */
+}
 
 async function getMovie(){
     try {
         const response = await fetch(url);
         var data = await response.json();
         var movie = data.results[position];
-        console.log(movie)
-    
-        setMovieBaseInfo(movie);
-        setMovieSummary(movie);
-        getMovieCast(movie);
-        getMovieSimilar(movie);
-        getMovieRecommendations(movie);
-        setDate();
+        console.log(movie);
+        setMovieInfo(movie);
+        localStorage.movieOfTheDay = JSON.stringify(movie);
         
     } catch (error) {
         console.error(error)
     }
+}
+
+function setMovieInfo(movie){
+    setMovieBaseInfo(movie);
+    setMovieSummary(movie);
+    getMovieCast(movie);
+    getMovieSimilar(movie);
+    getMovieRecommendations(movie);
+    setDate();        
 }
 
 /* fetch(url).then(response => response.json()).then(data =>{
