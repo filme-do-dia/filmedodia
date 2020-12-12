@@ -1,4 +1,4 @@
-const api_key = API_KEY;
+const api_key = "3f91f0994a6cd8f151cd33e0d9d76a08";
 const baseUrl = 'https://api.themoviedb.org/3';
 const language = 'pt-BR'
 const page = Math.floor(Math.random() * 500) + 1;
