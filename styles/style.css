@@ -1,7 +1,245 @@
+
 body{
-    background-color: rgb(54, 54, 54);
+    margin: 0;
+    padding: 3vh;
+    background-color: rgb(32, 32, 32);
+    font-family: 'Lato', sans-serif;
+    /* background-image: linear-gradient(lightgray, black) */
 }
 
 h1{
-    color: antiquewhite
+
+    color: white;
+
 }
+
+#movieName {
+    font-weight: bold;
+    display: inline-flex;
+}
+
+#movieYear {
+    display: inline-flex;
+}
+
+.mainInfoData{
+    padding: 4vh;
+    text-align: center;
+}
+
+#posterMovie, #actorImage{
+    width: 100%;
+    border-radius: 3%;
+}
+
+
+#info, #infoActor{
+    background-color: gray; 
+    border-radius: 0.5rem;
+    margin-top: 3vh;
+    padding-bottom: 5vh;
+}
+
+@media (min-width:575px) and (max-width: 991px){
+    #posterMovie, #actorImage{
+        width: 50%;
+    }
+    #info, #infoActor{
+        width: 50%;
+    }
+    .mainInfoData{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+#summary{
+    margin: 3vh 0;
+    border-radius: 0.5rem;
+    background-color: gray;    
+    padding: 2rem
+}
+
+.moreInfo{
+    margin-top: 0.5rem;
+}
+
+#rate, #watch, #trailer{
+    background-color: lightgray;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+    border: 5px solid gray;
+    color: black;
+    text-align: center;
+}
+
+#rate img{
+    height: 4rem;
+    margin-right: 2rem;
+}
+
+/*--melhoria: limitar quantidade ou menu hamburguer*/
+.watchImg img{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 0.5rem;;
+}
+
+#ondeAssistir, #trailers {
+    display: inline-block;
+}
+
+.thumbProvider {
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.25rem;
+    display: inline-flex;
+}
+
+.info-provider {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 4rem;
+    color: #fff;
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    font-size: small;
+    line-height: 1;
+    letter-spacing: -0.25pt;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.1rem 0.1rem 0.25rem;
+}
+
+.thumbProvider:hover .info-provider {
+    display: block
+}
+.thumbProvider:focus .info-provider {
+    display: block
+}
+
+#trailers a img {
+    margin: 0.25rem;
+}
+
+#cast, #knownFor{
+    margin: 0;
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+    background-color: gray;
+    color: white;
+}
+
+button{
+    border: none;
+    border-radius: 0.5rem;
+    background-color:lightgray;
+    margin: 1rem 0rem;
+    width: 10%;  
+}
+
+button:hover{
+    background-color:white;
+    transition-duration: 0.5s;
+}
+
+#moreActorsDiv{
+    display: none
+}
+
+#cast .col-md-2{
+    text-align: center;
+}
+
+.actor-character {
+    text-align: center;
+    margin-top: 0.6rem;
+}
+
+.actorImg{
+    height: 12rem;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+#btnMoreActors {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    font-size: x-large;
+    line-height: 1;
+    vertical-align: middle;
+    font-weight: bold;
+}
+#divBtnMoreActors {
+    margin-bottom: 1rem;
+}
+
+#moreActorsDiv {
+    width: 100%;
+}
+
+#moreMovies, #actorMovies{
+    margin-top: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.sectionMovies{
+    background-color: gray;
+    border-radius: 1.5rem;
+    border: 1.5vh solid rgb(54, 54, 54);
+    padding-top: 1.5vh;
+}
+
+#moreMovies img, #knownFor img{
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+#moreMovies h6, #knownFor h6{
+    margin: 1rem 0;
+}
+
+/* .btnVoltar img{
+    width: 100%;
+    margin: 1rem;
+}
+ */
+
+.btnVoltar{
+   width: 40%;
+}
+
+#knownFor p{
+    margin-top: -1rem;
+}
+
+.actorCasting{
+    margin-top: 1rem !important;
+}
+
+footer{
+    padding-top: 3vh;
+    color: lightgray;
+    text-align: center;
+    font-size: 90%;
+}
+
+@media (min-width: 768px){
+    h1{
+        font-size: 4rem;
+    }
+}
+/* @media(max-width:1024px){
+    #moreMovies h6{
+        font-size: 11px;
+        margin: 0.8rem 0;
+    }
+} */
