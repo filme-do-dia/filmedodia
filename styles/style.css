@@ -138,13 +138,13 @@ h1{
 button{
     border: none;
     border-radius: 0.5rem;
-    background-color: rgba(211, 211, 211, 0.3);
+    background-color:lightgray;
     margin: 1rem 0rem;
     width: 10%;  
 }
 
 button:hover{
-    background-color: white;
+    background-color:white;
     transition-duration: 0.5s;
 }
 
@@ -158,6 +158,7 @@ button:hover{
 
 .actor-character {
     text-align: center;
+    margin-top: 0.6rem;
 }
 
 .actorImg{
@@ -206,13 +207,22 @@ button:hover{
     margin: 1rem 0;
 }
 
-button img{
-    width: 10%;
-    margin: 0.5rem;
+/* .btnVoltar img{
+    width: 100%;
+    margin: 1rem;
+}
+ */
+
+.btnVoltar{
+   width: 40%;
 }
 
 #knownFor p{
     margin-top: -1rem;
+}
+
+.actorCasting{
+    margin-top: 1rem !important;
 }
 
 footer{

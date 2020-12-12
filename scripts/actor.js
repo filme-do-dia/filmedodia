@@ -8,7 +8,7 @@ function getActor(){
         setActorBaseInfo(actor)
         setActorPhoto(actor);
         setActorName(actor);
-        setActorYearOfBirth(actor);
+        setActorBirthday(actor);
         setActorActorNationality(actor);
         setActorBiography(actor);
         setActorMovies(actor);
@@ -21,7 +21,7 @@ function getActor(){
 function setActorBaseInfo(actor){
     setActorPhoto(actor);
     setActorName(actor);
-    setActorYearOfBirth(actor);
+    setActorBirthday(actor);
     setActorActorNationality(actor);
 }
 
@@ -34,8 +34,12 @@ function setActorName(actor) {
     document.getElementById('actorName').textContent = actor.name;
 }
 
-function setActorYearOfBirth(actor) {
-    document.getElementById('actorYearOfBirth').textContent = actor.birthday.slice(0, 4);
+function setActorBirthday(actor) {
+    var ano = actor.birthday.slice(0,4);
+    var mes = actor.birthday.slice(5,7);
+    var dia = actor.birthday.slice(8, actor.birthday.length);
+
+    document.getElementById('actorYearOfBirth').textContent = `${dia}/${mes}/${ano}`;
 }
 
 function setActorActorNationality(actor) {
@@ -54,8 +58,8 @@ function setActorMovies(actor){
             document.getElementById('actorMovies').innerHTML +=
                 `<div class="col-lg-4 col-md-6 col-sm-6">
                     <a href="novoFilme.html" onclick="setMovie('${movie.id}')"><img src="${movieImage}" alt="${movie.title}"></a>
-                    <h6>${movie.title}</h6>
-                    <p>como ${movie.character}</p>
+                    <p class="actorCasting"><strong>${movie.title}</strong></p>
+                    <p>${movie.character}</p>
                     <br>
                 </div>`
     })

@@ -7,9 +7,7 @@ function runOncePerDay(){
     } else if(!hasOneDayPassed()){
         var movie = JSON.parse(localStorage.movieOfTheDay)
         setMovieInfo(movie);
-    }
-  
-    
+    }    
 }
 
 async function getMovie(){
@@ -67,7 +65,7 @@ function getMovieCast(movie){
             document.getElementById('castDetail').innerHTML +=
                 `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
                     <a href="ator.html" onclick="setActor('${person.id}')"><img src="${personImage}" alt="${person.name}" class="actorImg"></a>
-                    <p class="actor-character"><strong>${person.name}</strong><br>${person.character}</p>
+                    <p class="actor-character"><strong>${person.name}</strong><br>${person.character}</p><br>
                 </div>`;            
         });
         document.getElementById('castDetail').innerHTML += 
