@@ -244,7 +244,8 @@ footer{
 }
 @media (min-width: 1500px){
     body{
-        padding: 0rem 15rem
+        padding-left: 15rem;
+        padding-right: 15rem;
     }
 }
 /* @media(max-width:1024px){
