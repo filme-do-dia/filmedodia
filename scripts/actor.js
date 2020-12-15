@@ -47,7 +47,11 @@ function setActorActorNationality(actor) {
 }
 
 function setActorBiography(actor){
-    document.getElementById('biography').textContent = actor.biography;
+    if(actor.biography != ""){
+        document.getElementById('biography').textContent = actor.biography;
+    } else {
+        document.getElementById('biography').innerHTML = "<i>Indisponível em português</i>";
+    }
 }
 
 function setActorMovies(actor){

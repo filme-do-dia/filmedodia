@@ -198,7 +198,7 @@ async function getProviders(movie){
     var providers = await response.json();
     var allProviders = providers.results.BR
     if (allProviders == undefined){
-        document.getElementById('ondeAssistir').innerHTML = '<span>Indisponível no Brasil</span>'
+        document.getElementById('ondeAssistir').innerHTML = '<span><i>Indisponível no Brasil</i></span>'
     }
 
     var buy = allProviders.buy;
