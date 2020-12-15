@@ -12,9 +12,15 @@ header{
 }
 
 h1{
-
+    font-size: 2rem;
     color: white;
+}
 
+@media (min-width: 768px){
+    h1{
+        /* font-size: 4rem; */
+        font-size: 2rem;
+    }
 }
 
 #movieName {
@@ -237,11 +243,6 @@ footer{
     font-size: 90%;
 }
 
-@media (min-width: 768px){
-    h1{
-        font-size: 4rem;
-    }
-}
 @media (min-width: 1500px){
     body{
         padding-left: 15rem;
