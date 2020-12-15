@@ -7,6 +7,10 @@ body{
     /* background-image: linear-gradient(lightgray, black) */
 }
 
+header{
+    text-align: center;
+}
+
 h1{
 
     color: white;
@@ -193,7 +197,8 @@ button:hover{
 .sectionMovies{
     background-color: gray;
     border-radius: 1.5rem;
-    border: 1.5vh solid rgb(54, 54, 54);
+    /*border: 1.5vh solid rgb(54, 54, 54);*/
+    border: 1.5vh solid rgb(32, 32, 32);
     padding-top: 1.5vh;
 }
 
@@ -235,6 +240,11 @@ footer{
 @media (min-width: 768px){
     h1{
         font-size: 4rem;
+    }
+}
+@media (min-width: 1500px){
+    body{
+        padding: 0rem 15rem
     }
 }
 /* @media(max-width:1024px){
