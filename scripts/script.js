@@ -63,7 +63,7 @@ function getMovieCast(movie){
         castShow.forEach(person => {
             var personImage = person.profile_path ? `http://image.tmdb.org/t/p/w300/${person.profile_path}` : 'img/semimagem.png';
             document.getElementById('castDetail').innerHTML +=
-                `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
+                `<div class="col-md-2 col-sm-4 d-flex flex-column align-items-center">
                     <a href="ator.html" onclick="setActor('${person.id}')"><img src="${personImage}" alt="${person.name}" class="actorImg"></a>
                     <p class="actor-character"><strong>${person.name}</strong><br>${person.character}</p><br>
                 </div>`;            
@@ -79,7 +79,7 @@ function getMovieCast(movie){
         castMore.forEach(person => {
             var personImage = person.profile_path ? `http://image.tmdb.org/t/p/w300/${person.profile_path}` : 'img/semimagem.png';
             document.getElementById('moreActors').innerHTML +=
-                `<div class="col-md-4 col-sm-4 d-flex flex-column align-items-center">
+                `<div class="col-md-2 col-sm-4 d-flex flex-column align-items-center">
                     <a href="ator.html" onclick="setActor('${person.id}')"><img src="${personImage}" alt="${person.name}" class="actorImg"></a>
                     <p><strong>${person.name}</strong> é <br>${person.character}</p>
                 </div>`;
@@ -277,7 +277,7 @@ async function getTrailers(movie){
 
     resultados.forEach(function (resultado, limitador) {
         
-        if (limitador < 6) {
+        if (limitador < 3) {
         
             if (resultado.site == "YouTube") {
                 document.getElementById('trailers').innerHTML +=

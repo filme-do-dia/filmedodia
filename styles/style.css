@@ -4,7 +4,8 @@ body{
     padding: 3vh;
     background-color: rgb(32, 32, 32);
     font-family: 'Lato', sans-serif;
-    /* background-image: linear-gradient(lightgray, black) */
+    background-image: url(/img/background.jpg);
+    background-size: 100%;
 }
 
 header{
@@ -40,6 +41,10 @@ h1{
 #posterMovie, #actorImage{
     width: 100%;
     border-radius: 3%;
+}
+
+#posterMovie{
+    box-shadow: 0 0 2vh 0 white;
 }
 
 
@@ -78,7 +83,7 @@ h1{
 #rate, #watch, #trailer{
     background-color: lightgray;
     border-radius: 0.5rem;
-    padding: 0.7rem;
+    padding: 0.8vh;
     border: 5px solid gray;
     color: black;
     text-align: center;
@@ -91,9 +96,9 @@ h1{
 
 /*--melhoria: limitar quantidade ou menu hamburguer*/
 .watchImg img{
-    height: 4rem;
-    width: 4rem;
-    border-radius: 0.5rem;;
+    height: 5vh;
+    width: 5vh;
+    border-radius: 1vh;
 }
 
 #ondeAssistir, #trailers {
@@ -102,8 +107,8 @@ h1{
 
 .thumbProvider {
     position: relative;
-    width: 4rem;
-    height: 4rem;
+    height: 5vh;
+    width: 5vh;
     margin: 0.25rem;
     display: inline-flex;
 }
@@ -166,13 +171,19 @@ button:hover{
     text-align: center;
 }
 
+#castDetail{
+    padding: 1vh;
+}
+
 .actor-character {
     text-align: center;
     margin-top: 0.6rem;
 }
 
 .actorImg{
-    height: 12rem;
+    object-fit: cover;
+    width: 8vh;
+    height: 8vh;
     border-radius: 0.5rem;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
@@ -187,7 +198,7 @@ button:hover{
     font-weight: bold;
 }
 #divBtnMoreActors {
-    margin-bottom: 1rem;
+    margin: -5vh 0 0 0;
 }
 
 #moreActorsDiv {
