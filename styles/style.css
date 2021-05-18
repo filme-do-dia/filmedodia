@@ -1,4 +1,9 @@
 
+@font-face {
+    font-family: "CalendarNote";
+    src: url("calendar note tfb.ttf");
+    }
+
 body{
     margin: 0;
     padding: 3vh;
@@ -13,6 +18,7 @@ header{
 }
 
 h1{
+    font-family: "CalendarNote";
     font-size: 2rem;
     color: white;
 }
