@@ -1,9 +1,9 @@
 function getActor(){
-    var actor = sessionStorage.getItem('actorId');
-    /* var actor = localStorage.getItem('actorId') */
+    const actor = sessionStorage.getItem('actorId');
+    /* const actor = localStorage.getItem('actorId') */
     // fetch(`${baseUrl}/person/${actor}?api_key=${api_key}&language=en-US&append_to_response=credits`).then(response => response.json()).then(data => {
         fetch(`${baseUrl}/person/${actor}?api_key=${api_key}&language=pt-BR&append_to_response=credits`).then(response => response.json()).then(data => {
-        var actor = data;
+        const actor = data;
         console.log(actor)
         setActorBaseInfo(actor)
         setActorPhoto(actor);
@@ -26,7 +26,7 @@ function setActorBaseInfo(actor){
 }
 
 function setActorPhoto(actor) {
-    var actorImage = actor.profile_path ? `http://image.tmdb.org/t/p/w500/${actor.profile_path}` : 'img/semimagem.png';
+    const actorImage = actor.profile_path ? `http://image.tmdb.org/t/p/w500/${actor.profile_path}` : 'img/semimagem.png';
     document.getElementById('actorImage').src = actorImage;
 }
 
@@ -35,9 +35,9 @@ function setActorName(actor) {
 }
 
 function setActorBirthday(actor) {
-    var ano = actor.birthday.slice(0,4);
-    var mes = actor.birthday.slice(5,7);
-    var dia = actor.birthday.slice(8, actor.birthday.length);
+    const ano = actor.birthday.slice(0,4);
+    const mes = actor.birthday.slice(5,7);
+    const dia = actor.birthday.slice(8, actor.birthday.length);
 
     document.getElementById('actorYearOfBirth').textContent = `${dia}/${mes}/${ano}`;
 }
@@ -55,13 +55,13 @@ function setActorBiography(actor){
 }
 
 function setActorMovies(actor){
-    var actorMovies = actor.credits.cast;
+    const actorMovies = actor.credits.cast;
 
     actorMovies.forEach(movie => {
-        var movieImage = movie.poster_path ? `http://image.tmdb.org/t/p/w300/${movie.poster_path}` : 'img/semimagem.png';
+        const movieImage = movie.poster_path ? `http://image.tmdb.org/t/p/w300/${movie.poster_path}` : 'img/semimagem.png';
             document.getElementById('actorMovies').innerHTML +=
                 `<div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="novoFilme.html" onclick="setMovie('${movie.id}')"><img src="${movieImage}" alt="${movie.title}"></a>
+                    <a href="relatedMovie.html" onclick="setMovie('${movie.id}')"><img src="${movieImage}" alt="${movie.title}"></a>
                     <p class="actorCasting"><strong>${movie.title}</strong></p>
                     <p>${movie.character}</p>
                     <br>

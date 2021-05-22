@@ -1,5 +1,5 @@
 function formatDate(date) {
-    var d = new Date(date),
+    let d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
@@ -15,7 +15,7 @@ function formatDate(date) {
 // checks if one day has passed. 
 function hasOneDayPassed(){
   // get today's date. eg: "7/37/2007"
-  var date = new Date().toLocaleDateString();
+  const date = new Date().toLocaleDateString();
 
   // if there's a date in localstorage and it's equal to the above: 
   // inferring a day has yet to pass since both dates are equal.
