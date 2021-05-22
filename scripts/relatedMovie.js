@@ -8,11 +8,11 @@ async function getRelatedMovie(){
         console.log(movie)
     
         setMovieBaseInfo(movie);
-        setrelatedMovieGenre(movie)
+        setRelatedMovieGenre(movie)
         setMovieSummary(movie);
         handleMovieCast(movie);
-        getMovieSimilar(movie);
-        getMovieRecommendations(movie);
+        handleSimilarMovies(movie);
+        handleMovieRecommendations(movie);
         //setDate();
         document.title = movie.title;
         
@@ -21,12 +21,12 @@ async function getRelatedMovie(){
     }
 
 }
-    function setrelatedMovieGenre(movie) {
-        const getGeneros = movie.genres;
-        let generos = [];
-        getGeneros.forEach(genero => {
-            generos.push(genero.name)
-        })
-        generos = generos.join(', ');
-        document.getElementById('movieCategory').textContent = generos;
-    }
+function setRelatedMovieGenre(movie) {
+    const getGeneros = movie.genres;
+    let generos = [];
+    getGeneros.forEach(genero => {
+        generos.push(genero.name)
+    })
+    generos = generos.join(', ');
+    document.getElementById('movieCategory').textContent = generos;
+}

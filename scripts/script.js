@@ -1,4 +1,4 @@
-//--todo: fazer rodar 1x por dia | colocar a data do dia atual | melhorar a escolha do page para caso tenha mais de 500 pages um dia na api
+//--todo: melhorar a escolha do page para caso tenha mais de 500 pages um dia na api
 
 async function runOncePerDay(){
     const movie = await getMovie();
@@ -16,8 +16,8 @@ function setMovieInfo(movie){
     setMovieBaseInfo(movie);
     setMovieSummary(movie);
     handleMovieCast(movie);
-    getMovieSimilar(movie);
-    getMovieRecommendations(movie);
+    handleSimilarMovies(movie);
+    handleMovieRecommendations(movie);
     setDate();        
 }
 
@@ -30,7 +30,7 @@ function setMovieBaseInfo(movie) {
     setMoviePoster(movie);
     setMovieTitle(movie);
     setMovieYear(movie);
-    setMovieGenre(movie);
+    handleMovieGenres(movie);
 }
 
 function setMovieSummary(movie) {
@@ -49,109 +49,19 @@ async function handleMovieCast(movie){
     setCastMore(castMore);
 }
 
-function setActor(id){
-    sessionStorage.setItem('actorId', id);
-    /* localStorage.setItem('actorId', id); */
+async function handleSimilarMovies(movie){
+    const similarMovies = await getMovieSimilar(movie);
+    setSimilarMovies(similarMovies);
 }
 
-function showMoreActors(){
-    const divMoreActors = document.getElementById('moreActorsDiv');
-    const btnMoreActors = document.getElementById('btnMoreActors');
-    if(divMoreActors.style.display == 'none' || divMoreActors.style.display == ''){
-        divMoreActors.style.display = 'block';
-        btnMoreActors.innerHTML = '-';
-    } else {
-        divMoreActors.style.display = 'none';
-        btnMoreActors.innerHTML = '+';
-    }
+async function handleMovieRecommendations(movie){
+    const movieRecommendations = await getMovieRecommendations(movie);
+    setMovieRecommendations(movieRecommendations);
 }
 
-function getMovieSimilar(movie){
-    fetch(`${baseUrl}/movie/${movie.id}/similar?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
-        const similares = data.results;
-
-        similares.forEach(similar => {
-            const posterImage = similar.poster_path.length ? `http://image.tmdb.org/t/p/w300/${similar.poster_path}` : 'img/semimagem.png';
-            document.getElementById('similarMovies').innerHTML +=
-                `<div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="relatedMovie.html" onclick="setMovie('${similar.id}')"><img src="${posterImage}" alt="${similar.title}"></a>                    
-                    <h6>${similar.title}</h6>
-                    <br>
-                </div>`
-        })
-    }).catch(err=>console.error('Erro:' + err))
-}
-
-function setMovie(id){
-    sessionStorage.setItem('movieId', id);
-    /* localStorage.setItem('movieId', id); */
-}
-
-function getMovieRecommendations(movie){
-    fetch(`${baseUrl}/movie/${movie.id}/recommendations?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
-        const recommendations = data.results;
-
-        recommendations.forEach(recommendation => {
-            const posterImage = recommendation.poster_path ? `http://image.tmdb.org/t/p/w300/${recommendation.poster_path}` : 'img/semimagem.png';
-            document.getElementById('recommendationsMovies').innerHTML +=
-                `<div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="relatedMovie.html" onclick="setMovie('${recommendation.id}')"><img src="${posterImage}" alt="${recommendation.title}"></a>                    
-                    <h6>${recommendation.title}</h6>
-                    <br>
-                </div>`
-        })
-    }).catch(err=>console.error('Erro:' + err))
-}
-
-function setDate(){
-    let today = new Date();
-    today = formatDate(today);
-    //document.getElementById('webTitle').innerHTML += `${today}`;
-    const x = today.split("/")
-    document.getElementById('webTitle').innerHTML += `${x[0]} <br> ${x[1]} <br> ${x[2]} `;
-}
-
-function setMoviePoster(movie) {
-    if (movie.poster_path != null) {
-        const poster = `http://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-        document.getElementById('posterMovie').src = poster;
-    } else {
-        document.getElementById('posterMovie').src = "img/semimagem.png";
-    }
-}
-
-function setMovieTitle(movie) {
-    const titulo = movie.title;
-    document.getElementById('movieName').textContent = titulo;
-}
-
-function setMovieYear(movie) {
-    const ano = movie.release_date.slice(0, 4);
-    document.getElementById('movieYear').textContent = "(" + ano + ")";
-}
-
-function setMovieGenre(movie) {
-    fetch(`${baseUrl}/genre/movie/list?api_key=${api_key}&language=${language}`).then(response => response.json()).then(data => {
-        let generos = data.genres.filter(generoF => movie.genre_ids.includes(generoF.id)).map(generoM => generoM.name);
-        generos = generos.join(', ');
-        
-        document.getElementById('movieCategory').textContent = generos;
-    }).catch(err=>console.error('Erro:' + err));
-}
-
-function setMovieOverview(movie) {
-    const resumo = movie.overview;
-    document.getElementById('overview').textContent = resumo;
-}
-
-function setMovieVoteAverage(movie) {
-    const voteAverage = movie.vote_average;
-    document.getElementById('voteAverage').textContent = voteAverage;
-}
-
-function setMovieVoteCount(movie) {
-    const voteCount = movie.vote_count;
-    document.getElementById('voteCount').textContent = voteCount;
+async function handleMovieGenres(movie){
+    const movieGenres = await getMovieGenres();
+    setMovieGenre(movie, movieGenres);
 }
 
 async function getProviders(movie){
@@ -286,8 +196,37 @@ async function getTrailers(movie){
     } */
 }
 
+function setActor(id){
+    sessionStorage.setItem('actorId', id);
+    /* localStorage.setItem('actorId', id); */
+}
+
+function moreActorsButton(){
+    const divMoreActors = document.getElementById('moreActorsDiv');
+    const btnMoreActors = document.getElementById('btnMoreActors');
+    if(divMoreActors.style.display == 'none' || divMoreActors.style.display == ''){
+        divMoreActors.style.display = 'block';
+        btnMoreActors.innerHTML = '-';
+    } else {
+        divMoreActors.style.display = 'none';
+        btnMoreActors.innerHTML = '+';
+    }
+}
+
+function setMovie(id){
+    sessionStorage.setItem('movieId', id);
+    /* localStorage.setItem('movieId', id); */
+}
+
+function setDate(){
+    let today = new Date();
+    today = formatDate(today);
+    //document.getElementById('webTitle').innerHTML += `${today}`;
+    const x = today.split("/")
+    document.getElementById('webTitle').innerHTML += `${x[0]} <br> ${x[1]} <br> ${x[2]} `;
+}
+
 function voltarIndex(){
     window.location.href="index.html"
     /* window.history.back(); */
 }
-            

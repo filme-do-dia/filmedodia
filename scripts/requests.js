@@ -22,3 +22,36 @@ async function getMovieCast(movie){
         console.error('Erro:' + err)
     }
 };
+
+async function getMovieSimilar(movie){
+    try {
+        const response = await fetch(`${baseUrl}/movie/${movie.id}/similar?api_key=${api_key}&language=${language}`);
+        const data = await response.json();
+        const similares = data.results;
+        return similares;
+    } catch(error){
+        console.error('Erro:' + err)
+    }
+};
+
+async function getMovieRecommendations(movie){
+    try {
+        const response = await fetch(`${baseUrl}/movie/${movie.id}/recommendations?api_key=${api_key}&language=${language}`);
+        const data = await response.json();
+        const recommendations = data.results;
+        return recommendations;
+    } catch(error){
+        console.error('Erro:' + err)
+    }
+};
+
+async function getMovieGenres(){
+    try {
+        const response = await fetch(`${baseUrl}/genre/movie/list?api_key=${api_key}&language=${language}`);
+        const data = await response.json();
+        const genres = data.genres;
+        return genres;
+    } catch(error){
+        console.error('Erro:' + err)
+    }
+};
