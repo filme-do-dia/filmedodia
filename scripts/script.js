@@ -145,7 +145,9 @@ function getMovieRecommendations(movie){
 function setDate(){
     var today = new Date();
     today = formatDate(today);
-    document.getElementById('webTitle').innerHTML += `${today}`;
+    //document.getElementById('webTitle').innerHTML += `${today}`;
+    const x = today.split("/")
+    document.getElementById('webTitle').innerHTML += `${x[0]} <br> ${x[1]} <br> ${x[2]} `;
 }
 
 function setMoviePoster(movie) {
